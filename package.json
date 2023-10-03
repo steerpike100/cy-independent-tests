@@ -1,0 +1,31 @@
+{
+	"name": "cy-independent-tests",
+	"version": "1.0.0",
+	"description": "Tests for Automation challenge ",
+	"main": "index.js",
+	"scripts": {
+		"cy:open": "cypress open"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/steerpike100/cy-independent-tests.git"
+	},
+	"author": "Steve Bartholomew",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/steerpike100/cy-independent-tests/issues"
+	},
+	"homepage": "https://github.com/steerpike100/cy-independent-tests#readme",
+	"devDependencies": {
+		"@badeball/cypress-cucumber-preprocessor": "^18.0.6",
+		"@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+		"cypress": "^13.3.0",
+		"cypress-eslint-preprocessor": "^1.2.2",
+		"prettier": "^3.0.3",
+		"typescript": "^5.2.2"
+	},
+	"peerDependencies": {
+		"@badeball/cypress-cucumber-preprocessor": "*",
+		"cypress": "*"
+	}
+}
