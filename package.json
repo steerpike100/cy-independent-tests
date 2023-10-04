@@ -22,6 +22,7 @@
 		"@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
 		"cypress": "^13.3.0",
 		"cypress-eslint-preprocessor": "^1.2.2",
+		"cypress-iframe": "^1.0.1",
 		"prettier": "^3.0.3",
 		"typescript": "^5.2.2"
 	},
@@ -30,6 +31,6 @@
 		"cypress": "*"
 	},
 	"cypress-cucumber-preprocessor": {
-		"nonGlobalSetpDefinitions": true
+		"nonGlobalStepDefinitions": true
 	}
 }

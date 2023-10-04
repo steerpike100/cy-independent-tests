@@ -6,11 +6,13 @@ import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esb
 export default defineConfig({
 	e2e: {
 		specPattern: '**/*.feature',
+		baseUrl: 'https://www.independent.co.uk/',
+		pageLoadTimeout: 120000,
+		chromeWebSecurity: false,
 		async setupNodeEvents(
 			on: Cypress.PluginEvents,
 			config: Cypress.PluginConfigOptions,
 		): Promise<Cypress.PluginConfigOptions> {
-			// This is required for the preprocessor to be able to generate JSON reports after each run, and more,
 			await addCucumberPreprocessorPlugin(on, config);
 
 			on(
@@ -19,8 +21,6 @@ export default defineConfig({
 					plugins: [createEsbuildPlugin(config)],
 				}),
 			);
-
-			// Make sure to return the config object as it might have been modified by the plugin.
 			return config;
 		},
 	},
