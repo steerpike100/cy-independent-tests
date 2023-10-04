@@ -41,7 +41,7 @@ When('I log in succesfully', () => {
 Then('I am authenticated and redirected to the correct article', () => {
 	cy.url().should(
 		'eq',
-		'https://www.independent.co.uk/extras/indybest/gadgets-tech/video-games-consoles/nintendo-switch-2-price-release-date-rumours-b2386412.html',
+		'https://www.independent.co.uk/extras/indybest/gadgets-tech/video-games-consoles/nintendo-switch-2-price-release-date-rumours-b2386412.html?loginSuccessful',
 	);
 
 	cy.contains('A. QA Test').should('exist');
