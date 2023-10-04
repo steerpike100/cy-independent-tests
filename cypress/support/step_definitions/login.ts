@@ -45,4 +45,6 @@ Then('I am authenticated and redirected to the correct article', () => {
 	);
 
 	cy.contains('A. QA Test').should('exist');
+
+	cy.getCookie('loggedIn').should('exist');
 });
