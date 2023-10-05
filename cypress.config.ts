@@ -9,10 +9,6 @@ export default defineConfig({
 		baseUrl: 'https://www.independent.co.uk/',
 		pageLoadTimeout: 120000,
 		chromeWebSecurity: false,
-		reporter: 'cypress-multi-reporters',
-		reporterOptions: {
-			configFile: 'reporter-config.json',
-		},
 		screenshotsFolder: 'reports/html/screenshots',
 		async setupNodeEvents(
 			on: Cypress.PluginEvents,

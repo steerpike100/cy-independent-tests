@@ -1,51 +1,53 @@
 {
-	"name": "cy-independent-tests",
-	"version": "1.0.0",
-	"description": "Tests for Automation challenge ",
-	"main": "index.js",
-	"scripts": {
-		"cy:open": "cypress open && npm run report:final",
-		"cy:run": "cypress run --spec cypress/e2e/authentication.feature && npm run report:final",
-		"scenario:authentication": "cypress run --spec \"cypress/integration/authentication.feature\"",
-		"scenario:registration": "cypress run --spec \"cypress/integration/registration.feature\"",
-		"report:clean": "rmdir /S /Q cypress\\reports && mkdir cypress\\reports && mkdir cypress\\reports\\html",
-		"report:merge": "mochawesome-merge cypress/results/json/*.json > cypress/results/mochawesome-report.json",
-		"report:generate": "marge cypress/results/mochawesome-report.json -o reports/html",
-		"report:copyScreenshots": "cp -r cypress/screenshots reports/html/screenshots",
-		"report:final": "npm run report:merge && npm run report:generate"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+ssh://git@github.com/steerpike100/cy-independent-tests.git"
-	},
-	"author": "Steve Bartholomew",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/steerpike100/cy-independent-tests/issues"
-	},
-	"homepage": "https://github.com/steerpike100/cy-independent-tests#readme",
-	"devDependencies": {
-		"@badeball/cypress-cucumber-preprocessor": "^18.0.6",
-		"@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-		"@faker-js/faker": "^8.1.0",
-		"cypress": "^13.3.0",
-		"cypress-eslint-preprocessor": "^1.2.2",
-		"cypress-iframe": "^1.0.1",
-		"cypress-multi-reporters": "^1.6.3",
-		"mochawesome": "^7.1.3",
-		"mochawesome-merge": "^4.3.0",
-		"mochawesome-report-generator": "^6.2.0",
-		"prettier": "^3.0.3",
-		"typescript": "^5.2.2"
-	},
-	"peerDependencies": {
-		"@badeball/cypress-cucumber-preprocessor": "*",
-		"cypress": "*"
-	},
-	"cypress-cucumber-preprocessor": {
-		"nonGlobalStepDefinitions": true
-	},
-	"dependencies": {
-		"dotenv": "^16.3.1"
-	}
+  "name": "cy-independent-tests",
+  "version": "1.0.0",
+  "description": "Tests for Automation challenge ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --spec cypress/e2e/authentication.feature",
+    "scenario:authentication": "cypress run --spec cypress/integration/authentication.feature",
+    "scenario:registration": "cypress run --spec cypress/integration/registration.feature",
+    "tag:smoke": "cypress run --env tags='@smoke'",
+    "lint:eslint": "eslint .",
+    "lint:tsc": "tsc --noEmit",
+    "lint": "npm run lint:eslint; npm run lint:tsc",
+    "lint:fix": "npm run lint:eslint -- --fix"
+  },
+  "author": {
+    "name": "Steve Bartholomew",
+    "license": "ISC"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.6",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^13.3.0",
+    "cypress-iframe": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "@faker-js/faker": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.7",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "cypress-eslint-preprocessor": "^1.2.2",
+    "eslint": "^8.36.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsonc": "^2.7.0",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.2.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": [
+      "cypress/e2e/steps/**/*.ts"
+    ],
+    "html": {
+      "enabled": true
+    }
+  }
 }
