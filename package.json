@@ -20,6 +20,7 @@
 	"devDependencies": {
 		"@badeball/cypress-cucumber-preprocessor": "^18.0.6",
 		"@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+		"@faker-js/faker": "^8.1.0",
 		"cypress": "^13.3.0",
 		"cypress-eslint-preprocessor": "^1.2.2",
 		"cypress-iframe": "^1.0.1",
@@ -32,5 +33,8 @@
 	},
 	"cypress-cucumber-preprocessor": {
 		"nonGlobalStepDefinitions": true
+	},
+	"dependencies": {
+		"dotenv": "^16.3.1"
 	}
 }
