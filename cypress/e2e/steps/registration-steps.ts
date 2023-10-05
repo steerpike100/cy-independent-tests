@@ -1,8 +1,14 @@
 ///<reference types="cypress"/>
 ///<reference types="cypress-iframe" />
-import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+import {  When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import { faker } from '@faker-js/faker';
+import {loginButton,usernameInput,passwordInput} from "../selectors.js";
 
+/**
+ * @description
+ * This step definition uses a mix of centrally stored locators and hard coded locators to demonstrate the use of both
+ * it also uses a third party library to generate random data for the registration form
+ */
 When('I fill in and submit the registration form with valid details', () => {
   const randomEmail = faker.internet.email();
   const randomFirstName = faker.person.firstName();
@@ -15,8 +21,8 @@ When('I fill in and submit the registration form with valid details', () => {
   const randomPassword = cy.randomPasswordGenerator(12);
 
   cy.log('Entering the email address into the Registration Form');
-  //Use a hknown value from run configuration for the exercise to allow deletion from prod database
-  cy.get('[data-tracking-name="Email"]').type('stevejbartholomew@gmail.com');
+  //Use a known value from run configuration for the exercise to allow deletion from prod database
+  cy.get(usernameInput).type(process.env.EMAIL_ADDRESS);
 
   //Do not generate random email address for the purpose of this test
   //cy.log(`The randomly generated email for this registration is: ${randomEmail}`);
@@ -34,7 +40,7 @@ When('I fill in and submit the registration form with valid details', () => {
 
   cy.log('Entering the Password into the Registration Form');
   cy.log(`The Random password is '${randomPassword}`);
-  cy.get('[data-tracking-name="Password"]').type('Ae678!3nD5');
+  cy.get(passwordInput).type('Ae678!3nD5');
 
   cy.log('Checking the Offers Check box in the Registration Form');
   cy.get('#form-receive-offer').scrollIntoView().check({ force: true });
@@ -46,7 +52,7 @@ When('I fill in and submit the registration form with valid details', () => {
   cy.clickDropdownPanel();
 
   cy.log('Clicking the Create My Account button in the Registration Form');
-  cy.get('button[name="register-form-submit"]', { timeout: 10000 })
+  cy.get(loginButton, { timeout: 10000 })
     .should('be.visible')
     .click();
 });

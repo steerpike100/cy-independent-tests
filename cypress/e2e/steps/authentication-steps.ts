@@ -2,11 +2,6 @@
 ///<reference types="cypress-iframe" />
 import {Before, Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 
-//in a Before step, set localStorage to confirm if we have closed the pop-up
-Before(() => {
- 
-});
-
 const relativeUrl =
   'extras/indybest/gadgets-tech/video-games-consoles/nintendo-switch-2-price-release-date-rumours-b2386412.html';
 

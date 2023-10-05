@@ -36,6 +36,12 @@ Before you begin, ensure you have met the following requirements:
    ```
 This will read the .nvmrc file in the project directory and use the specified Node.js version.
 
+## Environment Variables
+The project uses the `dotenv` library for easy management of environment variables.  All secrets should be 
+stored in the `.env` file in the project root.  This file is ignored by git and should never be committed to the repository. 
+Alternatively, setup a run configuration in VSCode's launch.json file to pass environment variables to the Cypress runner.  Secrets
+should be received in a Jenkins pipeline script using the convenience methods (TBC)
+
 ## Running Tests
 
 You can run Cypress tests using any of the scripts within the `package.json`:
