@@ -41,35 +41,7 @@ When('I choose to register as a new customer', () => {
 	cy.log('Selecting the register button and clicking it');
 	cy.contains('Register').click();
 
-	cy.frameLoaded('iframe[title^="offer"]', {
-		url: 'https://api.tinypass.com/checkout/template',
-	})
-		.should('be.visible')
-		.then(($iframe) => {
-			const $body = $iframe.contents().find('body');
-			cy.wrap($body)
-				.find('button[class="pn-template__close unbutton"]')
-				.click();
-		});
-
-	// cy.get('iframe[title*="offer"]').then(($iframe) => $iframe[0].remove);
-
-	// const getIframeDocument = () => {
-	// 	return (
-	// 		cy
-	// 			.get('iframe[data-cy="the-frame"]')
-	// 			// Cypress yields jQuery element, which has the real
-	// 			// DOM element under property "0".
-	// 			// From the real DOM iframe element we can get
-	// 			// the "document" element, it is stored in "contentDocument" property
-	// 			// Cypress "its" command can access deep properties using dot notation
-	// 			// https://on.cypress.io/its
-	// 			// cy.its also waits for the property to exist
-	// 			.its('0.contentDocument')
-	// 	);
-	// };
-
-	// cy.closePopUpWindow();
+	cy.closeOfferPopUp();
 });
 
 When('I log out', () => {
