@@ -9,7 +9,8 @@
     "cy:run": "cypress run --spec cypress/e2e/authentication.feature",
     "scenario:authentication": "cypress run --spec cypress/integration/authentication.feature",
     "scenario:registration": "cypress run --spec cypress/integration/registration.feature",
-    "tag:smoke": "cypress run --env tags='@smoke'",
+    "tag:authentication": "cypress run --env tags='@authentication'",
+    "tag:registration": "cypress run --env tags='@registration'",
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc --noEmit",
     "lint": "npm run lint:eslint; npm run lint:tsc",
@@ -22,16 +23,17 @@
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^18.0.6",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@faker-js/faker": "^8.1.0",
     "cypress": "^13.3.0",
     "cypress-iframe": "^1.0.1",
-    "dotenv": "^16.3.1",
-    "@faker-js/faker": "^8.1.0"
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "@types/node": "^18.15.7",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "cypress-eslint-preprocessor": "^1.2.2",
+    "cypress-localstorage-commands": "^2.2.4",
     "eslint": "^8.36.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
