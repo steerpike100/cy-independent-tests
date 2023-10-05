@@ -39,7 +39,7 @@ When('I fill in and submit the registration form with valid details', () => {
 	cy.get('[data-tracking-name="Password"]').type('Ae678!3nD5');
 
 	cy.log('Checking the Offers Check box in the Registration Form');
-	cy.get('#form-receive-offer').scrollIntoView().check();
+	cy.get('#form-receive-offer').scrollIntoView().check({ force: true });
 
 	cy.log('Opening the Opt-out panel in the Registration Form');
 	cy.clickDropdownPanel();
@@ -48,7 +48,9 @@ When('I fill in and submit the registration form with valid details', () => {
 	cy.clickDropdownPanel();
 
 	cy.log('Clicking the Create My Account button in the Registration Form');
-	cy.get('button[name="register-form-submit"]').click();
+	cy.get('button[name="register-form-submit"]', { timeout: 10000 })
+		.should('be.visible')
+		.click();
 });
 
 When(

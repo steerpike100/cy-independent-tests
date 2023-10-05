@@ -65,52 +65,47 @@ function selectIFrameAndConfirmConsent(): void {
 //using cypress-iframe
 function closePopUp(): void {
 	cy.on('uncaught:exception', (err, runnable) => {
-		// Handle any uncaught exceptions here, such as logging the error
 		cy.log(`Uncaught exception: ${err.message}`);
-		return false; // Prevent Cypress from failing the test
+		return false;
 	});
 
-	cy.get('iframe[title^="offer"]', { timeout: 5000 }) // Adjust the timeout as needed
-		.then(($iframe) => {
-			if ($iframe.length > 0) {
-				cy.wrap($iframe).then(($iframe) => {
-					if (
+	cy.get('iframe[title^="offer"]', { timeout: 5000 }).then(($iframe) => {
+		if ($iframe.length > 0) {
+			cy.wrap($iframe).then(($iframe) => {
+				if (
+					$iframe
+						.contents()
+						.find('body')
+						.find('button[class="pn-template__close unbutton"]')
+						.length > 0
+				) {
+					cy.wrap(
 						$iframe
 							.contents()
 							.find('body')
-							.find('button[class="pn-template__close unbutton"]')
-							.length > 0
-					) {
-						cy.wrap(
-							$iframe
-								.contents()
-								.find('body')
-								.find(
-									'button[class="pn-template__close unbutton"]',
-								),
-						).click();
-					} else {
-						cy.log('Popup did not appear.');
-					}
-				});
-			} else {
-				cy.log('Iframe not found.');
-			}
-		});
+							.find(
+								'button[class="pn-template__close unbutton"]',
+							),
+					).click();
+				} else {
+					cy.log('Popup did not appear.');
+				}
+			});
+		} else {
+			cy.log('Iframe not found.');
+		}
+	});
 }
 
 //native handler
 function closeOfferPopUp(): void {
-	// Handle any uncaught exceptions here, such as logging the error
 	cy.on('uncaught:exception', (err, runnable) => {
 		cy.log(`Uncaught exception: ${err.message}`);
-		return false; // Prevent Cypress from failing the test
+		return false;
 	});
 
-	// Check if the iframe exists (shorter timeout)
 	cy.get('iframe[title^="offer"]', { timeout: 2000 }).then(($iframe) => {
 		if ($iframe.length > 0) {
-			// If iframe exists, interact with its contents
 			cy.wrap($iframe).then(($iframe) => {
 				const closeButton = $iframe
 					.contents()
