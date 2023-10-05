@@ -93,7 +93,9 @@ When('the user submits the registration form', () => {
   cy.log('Clicking the Create My Account button in the Registration Form');
 });
 
-//The 'unsual activity detected' warning is preventing the test from passing
+/**The 'unsual activity detected' warning is preventing the test from passing
+ * This is a known issue and is being investigated
+ */
 Then('I should see a Thank you for registering message', () => {
   cy.log('Asserting that the user sees the Thank you for registering page');
   cy.title().should('eq', 'Thank you for registering');
@@ -104,12 +106,10 @@ Then(
   (errorMessage: string, field: string) => {
     cy.log('Asserting that the user sees an error message');
 
-    // Find the label element based on the provided 'field' text
     cy.contains('label', field)
       .should('exist')
       .invoke('text')
       .then((labelText) => {
-        // Find the corresponding error message element
         cy.contains('label', labelText)
           .siblings('p.csr-error-message')
           .should('be.visible')
