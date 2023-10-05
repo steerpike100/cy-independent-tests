@@ -5,16 +5,6 @@ import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 const relativeUrl =
 	'extras/indybest/gadgets-tech/video-games-consoles/nintendo-switch-2-price-release-date-rumours-b2386412.html';
 
-Given('I navigate to the home page and confirm privacy consent', () => {
-	cy.log('Visiting the Independent UK website');
-
-	cy.visit('/');
-
-	cy.selectIFrameAndConfirmConsent();
-
-	cy.closeOfferPopUp();
-});
-
 Given('A published article link directs me to a the login page', () => {
 	cy.log('Visiting the Independent UK website via a published article link');
 	cy.visit(`/${relativeUrl}`);
@@ -24,9 +14,19 @@ Given('A published article link directs me to a the login page', () => {
 	);
 
 	cy.selectIFrameAndConfirmConsent();
+	cy.closeOfferPopUp();
 
 	cy.log('Asserting that the login/register button is visible');
 	cy.checkLoginRegisterButton();
+});
+
+Given('I navigate to the home page and confirm privacy consent', () => {
+	cy.log('Visiting the Independent UK website');
+
+	cy.visit('/');
+
+	cy.selectIFrameAndConfirmConsent();
+	cy.closePopUp();
 });
 
 When('I log in succesfully', () => {
