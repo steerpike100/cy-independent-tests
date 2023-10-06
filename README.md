@@ -15,7 +15,7 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository to your local machine:
 
   ```shell
-  git clone https://github.com/your-username/cypress-framework.git
+  git clone git@github.com:steerpike100/cy-independent-tests.git
   ```
 
 2. Navigate to the project root directory:
