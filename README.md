@@ -42,6 +42,8 @@ stored in the `.env` file in the project root.  This file is ignored by git and 
 Alternatively, setup a run configuration in VSCode's launch.json file to pass environment variables to the Cypress runner.  Secrets
 should be received in a Jenkins pipeline script using the convenience methods (TBC)
 
+The email and password for login are obfuscated and should be set in the `.env`file
+
 ## Running Tests
 
 You can run Cypress tests using any of the scripts within the `package.json`:

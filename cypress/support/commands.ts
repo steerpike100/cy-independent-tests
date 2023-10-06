@@ -40,10 +40,12 @@ function login(): void {
   cy.contains('Log in / Register').click();
 
   cy.log('Entering the email address');
-  cy.get('#login-form-email').type('cypress.test@gmail.com');
+  //email obfuscated for security reasons
+  cy.get('#login-form-email').type(process.env.EMAIL_ADDRESS);
 
   cy.log('Entering the password');
-  cy.get('#login-form-password').type('Qwerty12345');
+  //password obfuscated for security reasons
+  cy.get('#login-form-password').type(process.env.PASSWORD);
 
   cy.log('Clicking the login button');
   cy.contains('Submit').click();
