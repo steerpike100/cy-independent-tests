@@ -98,14 +98,10 @@ function closePopUpWindow(): void {
             .and('not.be.empty')
             .its('readyState')
             .should('eq', 'complete');
-        // Check if the jQuery object contains any elements
         if ($iframe.length > 0) {
-          // Cast the iframe element to the HTMLIFrameElement type
           const iframe = $iframe[0] as HTMLIFrameElement;
-          // Access the contentDocument property of the iframe element and wrap it with cy.wrap()
           const doc = iframe.contentDocument;
           cy.wrap(doc);
-          // Find and click the close button element and assert that the modal is not visible
           cy.wrap(doc)
               .find('button[class="pn-template__close unbutton"]')
               .click();
@@ -114,7 +110,7 @@ function closePopUpWindow(): void {
       });
 }
 
-//native handler
+//Alternative pop up close function
 function closeOfferPopUp(): void {
   cy.on('uncaught:exception', (err, runnable) => {
     cy.log(`Uncaught exception: ${err.message}`);
