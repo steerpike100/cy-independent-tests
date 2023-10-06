@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "cypress run --spec cypress/e2e/authentication.feature",
+    "cy:auth": "cypress run --spec cypress/e2e/authentication.feature",
+    "cy:reg": "cypress run --spec cypress/e2e/registration.feature",
     "scenario:authentication": "cypress run --spec cypress/integration/authentication.feature",
     "scenario:registration": "cypress run --spec cypress/integration/registration.feature",
     "tag:authentication": "cypress run --env tags='@authentication'",

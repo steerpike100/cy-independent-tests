@@ -56,7 +56,8 @@ Run in interactive mode (opens Cypress Test Runner):
    ```
 Run in headless mode (electron browser)
    ```shell 
-    npm run cy:run
+    npm run cy:auth
+    npm run cy:reg
    ```
 Run by Cucumber tag in electron browser:
    ```shell 
