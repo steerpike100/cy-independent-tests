@@ -18,7 +18,7 @@ Before you begin, ensure you have met the following requirements:
   git clone git@github.com:steerpike100/cy-independent-tests.git
   ```
 
-2. Navigate to the project root directory:
+2. Navigate to the project root directory for where you cloned the repository:
 
   ```shell
   cd cy-independent-tests
@@ -31,6 +31,8 @@ Before you begin, ensure you have met the following requirements:
   ```
 
 4. Switch to the recommended Node.js version:
+   
+Install NVM with these instructions: https://github.com/nvm-sh/nvm#installing-and-updating
   ```shell
   nvm use
    ```
